@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鮮到味｜常見問題</title>
+<style>
+body{
+  margin:0;
+  font-family:"Noto Sans TC",sans-serif;
+  background:#ffffff;
+  color:#222;
+}
+.header{
+  text-align:center;
+  padding:20px 10px;
+  border-bottom:1px solid #eee;
+}
+.header h1{
+  margin:0;
+  font-size:22px;
+}
+.section{
+  padding:15px 20px;
+  border-bottom:1px solid #f0f0f0;
+}
+.q{
+  font-weight:bold;
+  margin-bottom:8px;
+}
+.a{
+  color:#444;
+  line-height:1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>常見問題 FAQ</h1>
+</div>
+
+<div class="section">
+<div class="q">Q1 商品(豆漿)保存方法?</div>
+<div class="a">
+豆漿請妥善冷藏保存，勿放置門邊，勿與溫度高商品共同保存。<br>
+冷凍商品解凍後，請於 3 日內使用完畢，商品請充分加熱後再食用。
+</div>
+</div>
+
+<div class="section">
+<div class="q">Q2 店家購物流程?</div>
+<div class="a">
+輸入店家名稱、地址、連絡電話、想了解的產品，會有客服聯繫您。
+</div>
+</div>
+
+<div class="section">
+<div class="q">Q3 團購購物流程?</div>
+<div class="a">
+加入 LINE 訂購商品：<br>
+https://freshbreakfast.github.io/order-group/<br><br>
+備註自取日期、時間（僅收現金，自備購物袋）<br>
+另有全家店到店（不定期滿額免運活動）
+</div>
+</div>
+
+<div class="section">
+<div class="q">Q4 公司聯絡方式?</div>
+<div class="a">
+聯絡電話：(02)8512-2798 / 8212-2799<br>
+地址：新北市三重區中興北街 42 號<br>
+Line@：@567ncwhd
+</div>
+</div>
+
+<div class="section">
+<div class="q">Q5 營業時間?</div>
+<div class="a">
+平日 9:00~19:00<br>
+週六 9:00~15:00<br>
+週日固定公休<br><br>
+自取建議先訂購，避免久候
+</div>
+</div>
+
+</body>
+</html>
