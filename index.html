@@ -23,7 +23,6 @@ body{
 .header h1{
   margin:0;
   font-size:22px;
-  font-weight:700;
 }
 
 .sub{
@@ -32,12 +31,14 @@ body{
   margin-top:6px;
 }
 
+/* FAQ 容器 */
 .faq{
   width:92%;
   max-width:620px;
   margin:20px auto;
 }
 
+/* 每個區塊（純 CSS 展開） */
 .item{
   background:#fff;
   border-radius:16px;
@@ -46,7 +47,14 @@ body{
   box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
 
+/* 隱藏 checkbox */
+.item input{
+  display:none;
+}
+
+/* 問題 */
 .q{
+  display:block;
   font-weight:600;
   cursor:pointer;
   position:relative;
@@ -55,6 +63,7 @@ body{
   user-select:none;
 }
 
+/* + / - */
 .q::after{
   content:"+";
   position:absolute;
@@ -64,18 +73,29 @@ body{
   color:#888;
 }
 
+/* 答案（預設隱藏） */
 .a{
-  display:none;
-  margin-top:10px;
+  max-height:0;
+  overflow:hidden;
+  transition:all .25s ease;
+  margin-top:0;
   color:#555;
   line-height:1.8;
   font-size:14px;
 }
 
-.item.active .q::after{
+/* 展開時 */
+.item input:checked ~ .a{
+  max-height:500px;
+  margin-top:10px;
+}
+
+/* 改變 + → - */
+.item input:checked + label.q::after{
   content:"−";
 }
 
+/* CTA */
 .cta{
   text-align:center;
   margin:34px 0 60px;
@@ -99,14 +119,15 @@ body{
 
 <div class="header">
   <h1>常見問題 FAQ</h1>
-  <div class="sub">如有其他問題，請點下方聯繫客服</div>
+  <div class="sub">點選問題即可展開內容</div>
 </div>
 
 <div class="faq">
 
 <!-- Q1 -->
 <div class="item">
-  <div class="q">Q1 店家購物流程</div>
+  <input type="checkbox" id="q1">
+  <label class="q" for="q1">Q1 店家購物流程</label>
   <div class="a">
     1. 提供店家名稱、地址、電話<br>
     2. 提供需求產品<br>
@@ -116,7 +137,8 @@ body{
 
 <!-- Q2 -->
 <div class="item">
-  <div class="q">Q2 團購購物流程</div>
+  <input type="checkbox" id="q2">
+  <label class="q" for="q2">Q2 團購購物流程</label>
   <div class="a">
     ▶ 門市取貨：<br>
     https://freshbreakfast.github.io/order-group/<br><br>
@@ -127,35 +149,33 @@ body{
   </div>
 </div>
 
-<!-- Q3 (已整合保存方式) -->
+<!-- Q3 -->
 <div class="item">
-  <div class="q">Q3 產品保存方式</div>
+  <input type="checkbox" id="q3">
+  <label class="q" for="q3">Q3 產品保存方式</label>
   <div class="a">
     【冷藏商品】<br>
     • 請勿放入冷凍<br>
     • 豆漿請妥善冷藏保存，勿放冰箱門邊<br>
     • 離開冷藏請勿超過 30 分鐘<br>
-    • 請避免與高溫商品共同存放<br>
-
-    <br>
+    • 請避免與高溫商品共同存放<br><br>
 
     【冷凍商品】<br>
     • 解凍後請於 3 日內食用完畢<br>
     • 食用前請充分加熱<br>
-    • 開封後一概不退換<br>
-
-    <br>
+    • 開封後一概不退換<br><br>
 
     【冷凍蘿蔔糕】<br>
     • 建議冷藏退冰 1 天<br>
-    • 煎製時可適量多加油，口感較佳<br>
-    • 開封退冰後請於 3 日內食用完畢<br>
+    • 煎製時可適量多加油<br>
+    • 開封退冰後請於 3 日內食用完畢
   </div>
 </div>
 
 <!-- Q4 -->
 <div class="item">
-  <div class="q">Q4 營業時間</div>
+  <input type="checkbox" id="q4">
+  <label class="q" for="q4">Q4 營業時間</label>
   <div class="a">
     平日 09:00～19:00<br>
     週六 09:00～15:00<br>
@@ -165,7 +185,8 @@ body{
 
 <!-- Q5 -->
 <div class="item">
-  <div class="q">Q5 聯絡資訊</div>
+  <input type="checkbox" id="q5">
+  <label class="q" for="q5">Q5 聯絡資訊</label>
   <div class="a">
     電話：(02) 8512-2798 / (02) 8212-2799<br>
     地址：新北市三重區中興北街42號<br>
@@ -176,51 +197,15 @@ body{
   </div>
 </div>
 
-<!-- Q6 -->
-<div class="item">
-  <div class="q">Q6 其他問題</div>
-  <div class="a">
-    若以上沒有找到您的問題，請直接聯繫客服協助👇
-  </div>
 </div>
 
-</div>
-
-<!-- 只保留一個 LINE 入口 -->
+<!-- 唯一 LINE 入口 -->
 <div class="cta">
   <a href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題，請協助我"
      target="_blank">
     一鍵聯繫 LINE 客服
   </a>
 </div>
-
-<script>
-const items = document.querySelectorAll(".item");
-
-items.forEach(item=>{
-  const q = item.querySelector(".q");
-  const a = item.querySelector(".a");
-
-  q.addEventListener("click", ()=>{
-
-    items.forEach(i=>{
-      if(i!==item){
-        i.classList.remove("active");
-        i.querySelector(".a").style.display = "none";
-      }
-    });
-
-    if(item.classList.contains("active")){
-      item.classList.remove("active");
-      a.style.display = "none";
-    }else{
-      item.classList.add("active");
-      a.style.display = "block";
-    }
-
-  });
-});
-</script>
 
 </body>
 </html>
