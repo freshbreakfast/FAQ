@@ -11,11 +11,12 @@ body{
   font-family:"Noto Sans TC",sans-serif;
   background:#f5f7f6;
   color:#222;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .header{
   text-align:center;
-  padding:26px 10px;
+  padding:24px 10px;
   background:#fff;
   border-bottom:1px solid #eee;
 }
@@ -26,25 +27,22 @@ body{
   font-weight:700;
 }
 
-.sub{
-  font-size:13px;
-  color:#777;
-  margin-top:6px;
-}
-
 .faq{
   width:92%;
   max-width:620px;
   margin:20px auto;
 }
 
-/* 卡片（純展示，不攔點擊） */
+/* 卡片（避免 OPPO layer bug） */
 .card{
   background:#fff;
   border-radius:16px;
   margin-bottom:14px;
   padding:16px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+
+  position:relative;
+  transform:translateZ(0);
 }
 
 /* 標題 */
@@ -55,21 +53,21 @@ body{
 
 /* 內容 */
 .content{
-  color:#555;
-  line-height:1.8;
   font-size:14px;
+  line-height:1.8;
+  color:#555;
 }
 
-/* 🔥 關鍵：確保連結一定可點 */
+/* 🔥 OPPO 穩定連結（重點） */
 .content a{
-  display:inline-block;
-  margin-top:6px;
   color:#1a73e8;
   text-decoration:underline;
-  word-break:break-all;
-  pointer-events:auto;
+
+  display:inline;
   position:relative;
-  z-index:2;
+  z-index:9999;
+  touch-action:manipulation;
+  word-break:break-all;
 }
 
 /* LINE 按鈕 */
@@ -87,7 +85,6 @@ body{
   text-decoration:none;
   font-weight:700;
   font-size:15px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.12);
 }
 </style>
 </head>
@@ -96,7 +93,6 @@ body{
 
 <div class="header">
   <h1>常見問題 FAQ</h1>
-  <div class="sub">如有問題請使用下方 LINE 聯繫</div>
 </div>
 
 <div class="faq">
@@ -138,20 +134,19 @@ body{
   <div class="title">Q3 產品保存方式</div>
   <div class="content">
     【冷藏商品】<br>
-    • 請勿放入冷凍<br>
-    • 豆漿請妥善冷藏保存，勿放冰箱門邊<br>
-    • 離開冷藏請勿超過 30 分鐘<br>
-    • 請避免與高溫商品共同存放<br><br>
+    • 請勿冷凍<br>
+    • 豆漿請冷藏保存<br>
+    • 離開冷藏勿超過30分鐘<br><br>
 
     【冷凍商品】<br>
-    • 解凍後請於 3 日內食用完畢<br>
+    • 解凍後3日內食用完畢<br>
     • 食用前請充分加熱<br>
-    • 開封後一概不退換<br><br>
+    • 開封後不退換<br><br>
 
     【冷凍蘿蔔糕】<br>
-    • 建議冷藏退冰 1 天<br>
-    • 煎製時可適量多加油<br>
-    • 開封退冰後請於 3 日內食用完畢
+    • 冷藏退冰1天<br>
+    • 煎製可多加油<br>
+    • 3日內食用完畢
   </div>
 </div>
 
@@ -171,14 +166,14 @@ body{
   <div class="content">
     電話：(02) 8512-2798 / (02) 8212-2799<br>
     地址：新北市三重區中興北街42號<br>
-        （EGG BUN 對面）<br>
+    （EGG BUN 對面）<br>
     LINE：@567ncwhd
   </div>
 </div>
 
 </div>
 
-<!-- 唯一 LINE 入口 -->
+<!-- LINE 唯一入口 -->
 <div class="cta">
   <a href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題"
      target="_blank">
