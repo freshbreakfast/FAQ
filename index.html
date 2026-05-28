@@ -15,7 +15,7 @@ body{
 
 .header{
   text-align:center;
-  padding:24px 10px;
+  padding:26px 10px;
   background:#fff;
   border-bottom:1px solid #eee;
 }
@@ -23,6 +23,13 @@ body{
 .header h1{
   margin:0;
   font-size:22px;
+  font-weight:700;
+}
+
+.sub{
+  font-size:13px;
+  color:#777;
+  margin-top:6px;
 }
 
 .faq{
@@ -31,7 +38,6 @@ body{
   margin:20px auto;
 }
 
-/* 卡片 */
 .item{
   background:#fff;
   border-radius:16px;
@@ -40,14 +46,12 @@ body{
   box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
 
-/* 問題 */
 .q{
   font-weight:600;
-  position:relative;
-  padding-right:28px;
   cursor:pointer;
-  line-height:1.5;
-  touch-action: manipulation;
+  position:relative;
+  padding-right:30px;
+  line-height:1.6;
   user-select:none;
 }
 
@@ -57,43 +61,36 @@ body{
   right:0;
   top:0;
   font-size:20px;
+  color:#888;
 }
 
-/* 答案 */
 .a{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .35s ease;
+  display:none;
+  margin-top:10px;
   color:#555;
-  line-height:1.7;
+  line-height:1.8;
+  font-size:14px;
 }
 
-.a-inner{
-  padding-top:12px;
-}
-
-/* 展開 */
 .item.active .q::after{
   content:"−";
 }
 
-.item.active .a{
-  max-height:800px;
-}
-
-/* CTA */
 .cta{
   text-align:center;
-  margin:30px 0 50px;
+  margin:34px 0 60px;
 }
 
 .cta a{
   display:inline-block;
-  padding:14px 30px;
-  background:#2c7a7b;
+  padding:14px 32px;
+  background:#06c755;
   color:#fff;
   border-radius:30px;
   text-decoration:none;
+  font-weight:700;
+  font-size:15px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
 }
 </style>
 </head>
@@ -102,94 +99,99 @@ body{
 
 <div class="header">
   <h1>常見問題 FAQ</h1>
+  <div class="sub">如有其他問題，請點下方聯繫客服</div>
 </div>
 
 <div class="faq">
 
 <!-- Q1 -->
 <div class="item">
-<div class="q">Q1 店家購物流程？</div>
-<div class="a"><div class="a-inner">
-• 輸入店家名稱、地址、聯絡電話。<br>
-• 輸入想了解的產品。<br>
-• 將由客服與您聯繫並回傳價目表。
-</div></div>
+  <div class="q">Q1 店家購物流程</div>
+  <div class="a">
+    1. 提供店家名稱、地址、電話<br>
+    2. 提供需求產品<br>
+    3. 客服回覆報價與細節
+  </div>
 </div>
 
 <!-- Q2 -->
 <div class="item">
-<div class="q">Q2 團購購物流程？</div>
-<div class="a"><div class="a-inner">
+  <div class="q">Q2 團購購物流程</div>
+  <div class="a">
+    ▶ 門市取貨：<br>
+    https://freshbreakfast.github.io/order-group/<br><br>
 
-加入 LINE 訂購商品：<br><br>
-
-▶ 門市取貨<br>
-點擊進入訂購頁：<br>
-<a href="https://freshbreakfast.github.io/order-group/" target="_blank">
-https://freshbreakfast.github.io/order-group/
-</a><br>
-※ 請備註自取日期/時間<br>
-※ 僅收現金，請自備購物袋<br><br>
-
-▶ 好賣+網站，全家配送<br>
-<a href="https://famistore.famiport.com.tw/users/2903801" target="_blank">
-https://famistore.famiport.com.tw/users/2903801
-</a><br>
-滿699免運配送
-
-</div></div>
+    ▶ 全家配送（好賣+）：<br>
+    https://famistore.famiport.com.tw/users/2903801<br>
+    滿699免運
+  </div>
 </div>
 
-<!-- Q3 -->
+<!-- Q3 (已整合保存方式) -->
 <div class="item">
-<div class="q">Q3 產品保存方式</div>
-<div class="a"><div class="a-inner">
+  <div class="q">Q3 產品保存方式</div>
+  <div class="a">
+    【冷藏商品】<br>
+    • 請勿放入冷凍<br>
+    • 豆漿請妥善冷藏保存，勿放冰箱門邊<br>
+    • 離開冷藏請勿超過 30 分鐘<br>
+    • 請避免與高溫商品共同存放<br>
 
-【冷藏商品】<br>
-• 請勿放入冷凍<br>
-• 豆漿請冷藏保存，勿放冰箱門邊<br>
-• 離開冷藏勿超過 30 分鐘<br>
-• 請勿與高溫商品共同存放<br><br>
+    <br>
 
-【冷凍商品】<br>
-• 解凍後請於 3 日內食用完畢<br>
-• 食用前請充分加熱<br>
-• 開封後一概不退換<br><br>
+    【冷凍商品】<br>
+    • 解凍後請於 3 日內食用完畢<br>
+    • 食用前請充分加熱<br>
+    • 開封後一概不退換<br>
 
-【冷凍蘿蔔糕】<br>
-• 建議冷藏退冰 1 天<br>
-• 煎製時可多放油，口感更佳<br>
-• 開封後 3 日內食用完畢
+    <br>
 
-</div></div>
+    【冷凍蘿蔔糕】<br>
+    • 建議冷藏退冰 1 天<br>
+    • 煎製時可適量多加油，口感較佳<br>
+    • 開封退冰後請於 3 日內食用完畢<br>
+  </div>
 </div>
 
 <!-- Q4 -->
 <div class="item">
-<div class="q">Q4 營業時間？</div>
-<div class="a"><div class="a-inner">
-• 平日：09:00～19:00<br>
-• 週六：09:00～15:00<br>
-• 週日固定公休<br><br>
-※ 建議提前訂購避免久候
-</div></div>
+  <div class="q">Q4 營業時間</div>
+  <div class="a">
+    平日 09:00～19:00<br>
+    週六 09:00～15:00<br>
+    週日公休
+  </div>
 </div>
 
 <!-- Q5 -->
 <div class="item">
-<div class="q">Q5 公司聯絡方式？</div>
-<div class="a"><div class="a-inner">
-• 電話：(02) 8512-2798 / (02) 8212-2799<br>
-• 地址：新北市三重區中興北街 42 號<br>
-&nbsp;&nbsp;&nbsp;&nbsp;（EGG BUN 對面）<br>
-• LINE：@567ncwhd
-</div></div>
+  <div class="q">Q5 聯絡資訊</div>
+  <div class="a">
+    電話：(02) 8512-2798 / (02) 8212-2799<br>
+    地址：新北市三重區中興北街42號<br>
+    <span style="display:block;margin-left:14px;color:#666;">
+      （EGG BUN 對面）
+    </span>
+    LINE：@567ncwhd
+  </div>
+</div>
+
+<!-- Q6 -->
+<div class="item">
+  <div class="q">Q6 其他問題</div>
+  <div class="a">
+    若以上沒有找到您的問題，請直接聯繫客服協助👇
+  </div>
 </div>
 
 </div>
 
+<!-- 只保留一個 LINE 入口 -->
 <div class="cta">
-  <a href="https://line.me/R/ti/p/@567ncwhd" target="_blank">加入 LINE 詢問</a>
+  <a href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題，請協助我"
+     target="_blank">
+    一鍵聯繫 LINE 客服
+  </a>
 </div>
 
 <script>
@@ -197,14 +199,25 @@ const items = document.querySelectorAll(".item");
 
 items.forEach(item=>{
   const q = item.querySelector(".q");
+  const a = item.querySelector(".a");
 
   q.addEventListener("click", ()=>{
+
     items.forEach(i=>{
       if(i!==item){
         i.classList.remove("active");
+        i.querySelector(".a").style.display = "none";
       }
     });
-    item.classList.toggle("active");
+
+    if(item.classList.contains("active")){
+      item.classList.remove("active");
+      a.style.display = "none";
+    }else{
+      item.classList.add("active");
+      a.style.display = "block";
+    }
+
   });
 });
 </script>
