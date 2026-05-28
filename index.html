@@ -25,21 +25,14 @@ body{
   font-size:22px;
 }
 
-.sub{
-  font-size:13px;
-  color:#777;
-  margin-top:6px;
-}
-
-/* FAQ 容器 */
 .faq{
   width:92%;
   max-width:620px;
   margin:20px auto;
 }
 
-/* 每個區塊（純 CSS 展開） */
-.item{
+/* 直接展開卡片（不互動） */
+.card{
   background:#fff;
   border-radius:16px;
   margin-bottom:14px;
@@ -47,55 +40,18 @@ body{
   box-shadow:0 8px 20px rgba(0,0,0,0.05);
 }
 
-/* 隱藏 checkbox */
-.item input{
-  display:none;
+.title{
+  font-weight:700;
+  margin-bottom:10px;
+  color:#222;
 }
 
-/* 問題 */
-.q{
-  display:block;
-  font-weight:600;
-  cursor:pointer;
-  position:relative;
-  padding-right:30px;
-  line-height:1.6;
-  user-select:none;
-}
-
-/* + / - */
-.q::after{
-  content:"+";
-  position:absolute;
-  right:0;
-  top:0;
-  font-size:20px;
-  color:#888;
-}
-
-/* 答案（預設隱藏） */
-.a{
-  max-height:0;
-  overflow:hidden;
-  transition:all .25s ease;
-  margin-top:0;
+.content{
   color:#555;
   line-height:1.8;
   font-size:14px;
 }
 
-/* 展開時 */
-.item input:checked ~ .a{
-  max-height:500px;
-  margin-top:10px;
-}
-
-/* 改變 + → - */
-.item input:checked + label.q::after{
-  content:"−";
-}
-
-/* CTA */
 .cta{
   text-align:center;
   margin:34px 0 60px;
@@ -109,8 +65,6 @@ body{
   border-radius:30px;
   text-decoration:none;
   font-weight:700;
-  font-size:15px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.12);
 }
 </style>
 </head>
@@ -119,45 +73,38 @@ body{
 
 <div class="header">
   <h1>常見問題 FAQ</h1>
-  <div class="sub">點選問題即可展開內容</div>
 </div>
 
 <div class="faq">
 
-<!-- Q1 -->
-<div class="item">
-  <input type="checkbox" id="q1">
-  <label class="q" for="q1">Q1 店家購物流程</label>
-  <div class="a">
+<div class="card">
+  <div class="title">Q1 店家購物流程</div>
+  <div class="content">
     1. 提供店家名稱、地址、電話<br>
     2. 提供需求產品<br>
     3. 客服回覆報價與細節
   </div>
 </div>
 
-<!-- Q2 -->
-<div class="item">
-  <input type="checkbox" id="q2">
-  <label class="q" for="q2">Q2 團購購物流程</label>
-  <div class="a">
-    ▶ 門市取貨：<br>
+<div class="card">
+  <div class="title">Q2 團購購物流程</div>
+  <div class="content">
+    門市取貨：<br>
     https://freshbreakfast.github.io/order-group/<br><br>
 
-    ▶ 全家配送（好賣+）：<br>
+    全家配送（好賣+）：<br>
     https://famistore.famiport.com.tw/users/2903801<br>
     滿699免運
   </div>
 </div>
 
-<!-- Q3 -->
-<div class="item">
-  <input type="checkbox" id="q3">
-  <label class="q" for="q3">Q3 產品保存方式</label>
-  <div class="a">
+<div class="card">
+  <div class="title">Q3 產品保存方式</div>
+  <div class="content">
     【冷藏商品】<br>
     • 請勿放入冷凍<br>
-    • 豆漿請妥善冷藏保存，勿放冰箱門邊<br>
-    • 離開冷藏請勿超過 30 分鐘<br>
+    • 豆漿請冷藏保存，勿放冰箱門邊<br>
+    • 離開冷藏勿超過 30 分鐘<br>
     • 請避免與高溫商品共同存放<br><br>
 
     【冷凍商品】<br>
@@ -172,40 +119,32 @@ body{
   </div>
 </div>
 
-<!-- Q4 -->
-<div class="item">
-  <input type="checkbox" id="q4">
-  <label class="q" for="q4">Q4 營業時間</label>
-  <div class="a">
+<div class="card">
+  <div class="title">Q4 營業時間</div>
+  <div class="content">
     平日 09:00～19:00<br>
     週六 09:00～15:00<br>
     週日公休
   </div>
 </div>
 
-<!-- Q5 -->
-<div class="item">
-  <input type="checkbox" id="q5">
-  <label class="q" for="q5">Q5 聯絡資訊</label>
-  <div class="a">
+<div class="card">
+  <div class="title">Q5 聯絡資訊</div>
+  <div class="content">
     電話：(02) 8512-2798 / (02) 8212-2799<br>
     地址：新北市三重區中興北街42號<br>
-    <span style="display:block;margin-left:14px;color:#666;">
-      （EGG BUN 對面）
-    </span>
+    （EGG BUN 對面）<br>
     LINE：@567ncwhd
   </div>
 </div>
 
 </div>
 
-<!-- 唯一 LINE 入口 -->
 <div class="cta">
-  <a href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題，請協助我"
+  <a href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題"
      target="_blank">
     一鍵聯繫 LINE 客服
   </a>
 </div>
-
 </body>
 </html>
