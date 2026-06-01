@@ -77,6 +77,13 @@ summary{
   font-weight:700;
 }
 
+/* loading */
+#loading{
+  margin-top:10px;
+  font-size:13px;
+  color:#666;
+}
+
 /* LINE 浮動按鈕 */
 .float-line{
   position:fixed;
@@ -125,32 +132,23 @@ summary{
 立即前往團購頁
 </a>
 
-<br>
+<br><br>
 
- ▶ 好賣+ 全家店到店<br> 
-<a href="https://famistore.famiport.com.tw/users/2903801"
-   onclick="showLoading(event)">
-   立即前往好賣+網站
+▶ 好賣+ 全家店到店<br>
+
+<a class="btn"
+   href="https://famistore.famiport.com.tw/users/2903801"
+   onclick="showLoading(event, this)">
+立即前往好賣+網站
 </a>
 
-<br>
-  
 <div id="loading" style="display:none;">
   🚚 正在連線好賣+...
 </div>
 
-<script>
-function showLoading(e){
-  e.preventDefault();
-  document.getElementById('loading').style.display='block';
-  setTimeout(()=>{
-    window.location.href = e.target.href;
-  }, 800);
-}
-</script>
-
 <br>
 滿699免運
+
 </div>
 </details>
 </div>
@@ -201,12 +199,24 @@ LINE：@567ncwhd
 
 </div>
 
-<!-- 浮動 LINE -->
+<!-- LINE 浮動按鈕 -->
 <a class="float-line"
 href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題"
 target="_blank">
 LINE 客服
 </a>
+
+<script>
+function showLoading(e, el){
+  e.preventDefault();
+
+  document.getElementById('loading').style.display = 'block';
+
+  setTimeout(() => {
+    window.location.href = el.href;
+  }, 600);
+}
+</script>
 
 </body>
 </html>
