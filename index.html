@@ -45,7 +45,6 @@ body{
   box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
 
-/* 展開 */
 details{
   cursor:pointer;
 }
@@ -77,11 +76,20 @@ summary{
   font-weight:700;
 }
 
-/* loading */
-#loading{
-  margin-top:10px;
-  font-size:13px;
-  color:#666;
+/* loading 圈圈 */
+.loader{
+  display:none;
+  width:16px;
+  height:16px;
+  border:2px solid #fff;
+  border-top:2px solid transparent;
+  border-radius:50%;
+  margin-left:8px;
+  animation:spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg);}
 }
 
 /* LINE 浮動按鈕 */
@@ -135,16 +143,13 @@ summary{
 <br>
 
 ▶ 好賣+ 全家店到店，滿699免運<br>
-
 <a class="btn"
    href="https://famistore.famiport.com.tw/users/2903801"
-   onclick="showLoading(event, this)">
-立即前往好賣+網站
+   target="_blank"
+   onclick="openWithLoading(event, this)">
+  <span class="text">立即前往好賣+網站</span>
+  <span class="loader"></span>
 </a>
-
-<div id="loading" style="display:none;">
-  🚚 正在連線好賣+...
-</div>
 
 </div>
 </details>
@@ -190,7 +195,8 @@ summary{
 <summary>Q5 聯絡資訊</summary>
 <div class="content">
 電話：(02) 8512-2798 / (02) 8212-2799<br>
-地址：新北市三重區中興北街42號<br>%20%20%20(EGG BUN 對面)<br>
+地址：新北市三重區中興北街42號<br>
+&nbsp;&nbsp;&nbsp;(EGG BUN 對面)<br>
 LINE：@567ncwhd
 </div>
 </details>
@@ -206,14 +212,23 @@ LINE 客服
 </a>
 
 <script>
-function showLoading(e, el){
+function openWithLoading(e, el){
   e.preventDefault();
 
-  document.getElementById('loading').style.display = 'block';
+  el.querySelector(".text").innerText = "載入中...";
+  el.querySelector(".loader").style.display = "inline-block";
 
-  setTimeout(() => {
-    window.location.href = el.href;
-  }, 600);
+  el.style.pointerEvents = "none";
+  el.style.opacity = "0.7";
+
+  window.open(el.href, "_blank");
+
+  setTimeout(()=>{
+    el.querySelector(".text").innerText = "立即前往好賣+網站";
+    el.querySelector(".loader").style.display = "none";
+    el.style.pointerEvents = "auto";
+    el.style.opacity = "1";
+  }, 800);
 }
 </script>
 
