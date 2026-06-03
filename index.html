@@ -49,10 +49,31 @@ details{
   cursor:pointer;
 }
 
+/* 隱藏預設的左側三角形 */
 summary{
   font-weight:700;
   font-size:15px;
   outline:none;
+  list-style: none; /* 隱藏標準瀏覽器三角形 */
+  display: flex;    /* 使用 flex 讓文字與右側箭頭分開 */
+  justify-content: space-between;
+  align-items: center;
+}
+summary::-webkit-details-marker {
+  display: none; /* 隱藏 Safari/Chrome 三角形 */
+}
+
+/* 在右側加上自訂箭頭 */
+summary::after {
+  content: "▼";
+  font-size: 12px;
+  color: #888;
+  transition: transform 0.3s ease; /* 讓箭頭旋轉時有平滑動畫 */
+}
+
+/* 當 details 展開時，右側箭頭旋轉 180 度指示收起 */
+details[open] summary::after {
+  transform: rotate(180deg);
 }
 
 /* 內容 */
@@ -85,6 +106,7 @@ summary{
   border-top:2px solid transparent;
   border-radius:50%;
   margin-left:8px;
+  vertical-align: middle;
   animation:spin 0.8s linear infinite;
 }
 
@@ -117,7 +139,6 @@ summary{
 
 <div class="faq">
 
-<!-- Q1 -->
 <div class="card">
 <details open>
 <summary>Q1 店家購物流程</summary>
@@ -129,7 +150,6 @@ summary{
 </details>
 </div>
 
-<!-- Q2 -->
 <div class="card">
 <details>
 <summary>Q2 團購購物流程</summary>
@@ -155,7 +175,6 @@ summary{
 </details>
 </div>
 
-<!-- Q3 -->
 <div class="card">
 <details>
 <summary>Q3 產品保存方式</summary>
@@ -177,7 +196,6 @@ summary{
 </details>
 </div>
 
-<!-- Q4 -->
 <div class="card">
 <details>
 <summary>Q4 營業時間</summary>
@@ -189,7 +207,6 @@ summary{
 </details>
 </div>
 
-<!-- Q5 -->
 <div class="card">
 <details>
 <summary>Q5 聯絡資訊</summary>
@@ -204,7 +221,6 @@ LINE：@567ncwhd
 
 </div>
 
-<!-- LINE 浮動按鈕 -->
 <a class="float-line"
 href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題"
 target="_blank">
@@ -215,20 +231,35 @@ LINE 客服
 function openWithLoading(e, el){
   e.preventDefault();
 
-  el.querySelector(".text").innerText = "載入中...";
-  el.querySelector(".loader").style.display = "inline-block";
-
+  // 1. 進入載入狀態
+  const btnText = el.querySelector(".text");
+  const btnLoader = el.querySelector(".loader");
+  
+  btnText.innerText = "載入中...";
+  btnLoader.style.display = "inline-block";
   el.style.pointerEvents = "none";
   el.style.opacity = "0.7";
 
-  window.open(el.href, "_blank");
-
-  setTimeout(()=>{
-    el.querySelector(".text").innerText = "立即前往好賣+網站";
-    el.querySelector(".loader").style.display = "none";
+  // 2. 定義復原按鈕的函式
+  function resetButton() {
+    btnText.innerText = "立即前往好賣+網站";
+    btnLoader.style.display = "none";
     el.style.pointerEvents = "auto";
     el.style.opacity = "1";
-  }, 800);
+    // 移除監聽器避免重複觸發
+    window.removeEventListener('blur', resetButton);
+  }
+
+  // 3. 監聽視窗失去焦點（當新分頁成功被開啟、跳轉的瞬間）
+  window.addEventListener('blur', resetButton);
+
+  // 安全機制：如果瀏覽器阻擋了彈出視窗或沒成功跳轉，2秒後自動復原按鈕
+  setTimeout(() => {
+    resetButton();
+  }, 2000);
+
+  // 4. 正式開啟新網站
+  window.open(el.href, "_blank");
 }
 </script>
 
