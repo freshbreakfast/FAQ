@@ -9,16 +9,20 @@
 :root{
   --brand-red:#d91f26;
   --brand-red-dark:#b8141b;
-  --brand-black:#171717;
-  --brand-cream:#fff7f0;
-  --brand-cream-2:#fffaf6;
+  --brand-red-soft:#ff6a4d;
+  --brand-black:#161616;
+  --brand-black-2:#242424;
+  --brand-cream:#fff8f2;
+  --brand-cream-2:#fffdfb;
+  --brand-cream-3:#fff3ea;
   --line:#06c755;
   --line-dark:#05ad49;
   --text:#1f2937;
   --sub:#6b7280;
   --card:#ffffff;
-  --border:#f0e4dc;
+  --border:#f3e5db;
   --shadow:0 12px 28px rgba(0,0,0,.08);
+  --shadow-soft:0 8px 20px rgba(0,0,0,.06);
   --radius:22px;
 }
 
@@ -34,61 +38,123 @@ body{
   color:var(--text);
   line-height:1.7;
   background:
-    radial-gradient(circle at top right, rgba(217,31,38,.08), transparent 26%),
-    linear-gradient(180deg, #fffdfa 0%, #fff8f2 100%);
-}
-
-/* ===== Header ===== */
-.header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(255,255,255,.96);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-
-.header-inner{
-  width:min(92%, 980px);
-  margin:0 auto;
-  padding:16px 0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
-.header-title{
-  margin:0;
-  font-size:20px;
-  font-weight:900;
-  color:var(--brand-black);
-}
-
-.header-badge{
-  display:inline-flex;
-  align-items:center;
-  padding:8px 12px;
-  border-radius:999px;
-  background:#fff5f5;
-  color:var(--brand-red-dark);
-  font-size:13px;
-  font-weight:800;
-  border:1px solid #f3d9d9;
+    radial-gradient(circle at top right, rgba(217,31,38,.08), transparent 24%),
+    linear-gradient(180deg, #fffdfa 0%, #fff7f0 100%);
 }
 
 /* ===== Main ===== */
 .wrap{
   width:min(92%, 980px);
-  margin:26px auto 120px;
+  margin:24px auto 120px;
 }
 
+/* ===== FAQ Hero ===== */
+.faq-hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255,255,255,.18), transparent 22%),
+    linear-gradient(135deg, #181818 0%, #232323 34%, var(--brand-red) 100%);
+  border-radius:30px;
+  padding:28px 22px;
+  margin-bottom:18px;
+  color:#fff;
+  box-shadow:0 18px 36px rgba(0,0,0,.14);
+}
+
+.faq-hero::before{
+  content:"";
+  position:absolute;
+  inset:auto auto -48px -38px;
+  width:180px;
+  height:180px;
+  background:rgba(255,255,255,.06);
+  border-radius:50%;
+}
+
+.faq-hero::after{
+  content:"";
+  position:absolute;
+  right:-18px;
+  bottom:-24px;
+  width:160px;
+  height:160px;
+  background:rgba(255,255,255,.07);
+  border-radius:50%;
+}
+
+.hero-top{
+  position:relative;
+  z-index:1;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.16);
+  font-size:13px;
+  font-weight:900;
+  backdrop-filter:blur(4px);
+}
+
+.hero-title{
+  margin:14px 0 8px;
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:.5px;
+  line-height:1.2;
+  position:relative;
+  z-index:1;
+}
+
+.hero-desc{
+  position:relative;
+  z-index:1;
+  margin:0;
+  max-width:640px;
+  color:rgba(255,255,255,.9);
+  font-size:14px;
+  line-height:1.9;
+}
+
+.hero-tags{
+  position:relative;
+  z-index:1;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.hero-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.14);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* ===== Section Head ===== */
 .section-head{
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  margin:0 0 16px;
+  margin:8px 0 16px;
+  padding:0 4px;
 }
 
 .section-title{
@@ -101,16 +167,23 @@ body{
 .section-sub{
   color:var(--sub);
   font-size:13px;
+  white-space:nowrap;
 }
 
-/* ===== FAQ card ===== */
+/* ===== FAQ Card ===== */
 .card{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  box-shadow:var(--shadow);
+  box-shadow:var(--shadow-soft);
   margin-bottom:14px;
   overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.card:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 30px rgba(0,0,0,.08);
 }
 
 details{
@@ -132,7 +205,7 @@ summary{
 }
 
 summary:hover{
-  background:#fff9f5;
+  background:#fffaf6;
 }
 
 summary::-webkit-details-marker{
@@ -148,17 +221,17 @@ summary::-webkit-details-marker{
 
 .q-tag{
   flex:0 0 auto;
-  width:36px;
-  height:36px;
+  width:38px;
+  height:38px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:var(--brand-red);
+  background:linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-soft) 100%);
   color:#fff;
   font-size:13px;
   font-weight:900;
-  box-shadow:0 8px 18px rgba(217,31,38,.2);
+  box-shadow:0 10px 18px rgba(217,31,38,.2);
 }
 
 .summary-text{
@@ -167,8 +240,8 @@ summary::-webkit-details-marker{
 
 .arrow{
   flex:0 0 auto;
-  width:32px;
-  height:32px;
+  width:34px;
+  height:34px;
   border-radius:50%;
   background:#fff4ee;
   color:var(--brand-red-dark);
@@ -181,7 +254,7 @@ summary::-webkit-details-marker{
 
 details[open] .arrow{
   transform:rotate(180deg);
-  background:#ffe7e8;
+  background:#ffe8e9;
 }
 
 .content{
@@ -203,6 +276,78 @@ details[open] .arrow{
   font-size:13px;
 }
 
+/* ===== Step list / custom bullets ===== */
+.step-list{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:12px;
+}
+
+.step-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  background:var(--brand-cream-2);
+  border:1px solid #f3e7df;
+  border-radius:16px;
+  padding:12px 14px;
+}
+
+.step-num{
+  flex:0 0 auto;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--brand-red);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  font-weight:900;
+  margin-top:1px;
+}
+
+.step-text{
+  flex:1;
+  color:#4b5563;
+  line-height:1.8;
+}
+
+/* ===== Sub boxes ===== */
+.sub-box{
+  background:linear-gradient(180deg, #fffdfa 0%, #fff8f4 100%);
+  border:1px solid #f4e7df;
+  border-radius:18px;
+  padding:16px;
+  margin-top:12px;
+  box-shadow:0 6px 16px rgba(0,0,0,.03);
+}
+
+.sub-box.highlight{
+  border:1px solid #ffd9cf;
+  background:
+    radial-gradient(circle at top right, rgba(255,106,77,.08), transparent 26%),
+    linear-gradient(180deg, #fffdfa 0%, #fff7f2 100%);
+}
+
+.sub-title{
+  margin:0 0 8px;
+  color:var(--brand-red-dark);
+  font-size:14px;
+  font-weight:900;
+}
+
+.sub-desc{
+  margin:0 0 12px;
+  color:var(--sub);
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* ===== Plain list ===== */
 .list{
   margin:0;
   padding-left:1.2em;
@@ -214,21 +359,6 @@ details[open] .arrow{
 
 .list li:last-child{
   margin-bottom:0;
-}
-
-.sub-box{
-  background:var(--brand-cream-2);
-  border:1px solid #f4e7df;
-  border-radius:16px;
-  padding:15px;
-  margin-top:12px;
-}
-
-.sub-title{
-  margin:0 0 8px;
-  color:var(--brand-red-dark);
-  font-size:14px;
-  font-weight:900;
 }
 
 /* ===== Buttons ===== */
@@ -257,7 +387,7 @@ details[open] .arrow{
   text-decoration:none;
   font-weight:900;
   font-size:15px;
-  transition:transform .15s ease, opacity .2s ease, box-shadow .2s ease;
+  transition:transform .15s ease, opacity .2s ease, box-shadow .2s ease, filter .2s ease;
 }
 
 .btn:hover{
@@ -265,13 +395,13 @@ details[open] .arrow{
 }
 
 .btn-primary{
-  background:var(--brand-red);
+  background:linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-soft) 100%);
   color:#fff;
   box-shadow:0 12px 22px rgba(217,31,38,.18);
 }
 
 .btn-primary:hover{
-  background:var(--brand-red-dark);
+  filter:brightness(.98);
 }
 
 .btn-line{
@@ -284,12 +414,17 @@ details[open] .arrow{
   background:var(--line-dark);
 }
 
+/* Q5 電話按鈕 */
 .btn-phone{
-  background:var(--brand-black);
+  background:linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-soft) 100%);
   color:#fff;
   width:auto;
   padding:12px 16px;
-  box-shadow:0 12px 22px rgba(0,0,0,.12);
+  box-shadow:0 12px 22px rgba(217,31,38,.18);
+}
+
+.btn-phone:hover{
+  filter:brightness(.98);
 }
 
 .btn-map{
@@ -315,27 +450,48 @@ details[open] .arrow{
   to{transform:rotate(360deg);}
 }
 
-/* ===== Contact ===== */
-.contact{
+/* ===== Contact card ===== */
+.contact-card{
+  background:
+    radial-gradient(circle at top right, rgba(255,106,77,.08), transparent 28%),
+    linear-gradient(180deg, #fffdfa 0%, #fff8f3 100%);
+  border:1px solid #f2dfd5;
+  border-radius:20px;
+  padding:16px;
+  box-shadow:0 8px 18px rgba(0,0,0,.04);
+}
+
+.contact-grid{
   display:grid;
   gap:12px;
 }
 
-.contact-item{
-  display:flex;
-  align-items:flex-start;
+.contact-row{
+  display:grid;
+  grid-template-columns:72px 1fr;
   gap:10px;
+  align-items:start;
+  padding:10px 0;
+  border-bottom:1px dashed #efdcd3;
+}
+
+.contact-row:last-child{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+.contact-row:first-child{
+  padding-top:0;
 }
 
 .contact-label{
-  min-width:52px;
-  font-weight:900;
   color:var(--brand-red-dark);
+  font-weight:900;
 }
 
 .contact-value{
-  flex:1;
   color:#4b5563;
+  line-height:1.8;
 }
 
 .contact-value a{
@@ -348,10 +504,27 @@ details[open] .arrow{
   text-decoration:underline;
 }
 
+/* ===== Food safety card ===== */
+.notice-box{
+  background:linear-gradient(180deg,#fffdfa 0%, #fff7f2 100%);
+  border:1px solid #f2dfd5;
+  border-radius:18px;
+  padding:16px;
+}
+
+.notice-title{
+  margin:0 0 8px;
+  color:var(--brand-red-dark);
+  font-size:15px;
+  font-weight:900;
+}
+
 /* ===== Footer ===== */
 .footer{
   margin-top:24px;
-  background:linear-gradient(180deg,#fff,#fffaf7);
+  background:
+    radial-gradient(circle at right top, rgba(255,106,77,.08), transparent 26%),
+    linear-gradient(180deg,#fff 0%, #fffaf7 100%);
   border:1px solid #f0e4dc;
   border-radius:24px;
   padding:20px;
@@ -441,31 +614,36 @@ details[open] .arrow{
 
 /* ===== Responsive ===== */
 @media (max-width:640px){
-  .header-inner{
-    padding:14px 0;
-  }
-
-  .header-title{
-    font-size:18px;
-  }
-
-  .header-badge{
-    font-size:12px;
-    padding:7px 10px;
-  }
-
   .wrap{
-    margin:18px auto 110px;
+    margin:16px auto 110px;
+  }
+
+  .faq-hero{
+    border-radius:24px;
+    padding:22px 18px;
+  }
+
+  .hero-title{
+    font-size:24px;
+  }
+
+  .hero-desc{
+    font-size:13px;
   }
 
   .section-head{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:6px;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
   }
 
   .section-title{
     font-size:20px;
+  }
+
+  .section-sub{
+    font-size:12px;
   }
 
   summary{
@@ -476,6 +654,10 @@ details[open] .arrow{
   .content{
     padding:0 16px 16px;
     font-size:14px;
+  }
+
+  .contact-row{
+    grid-template-columns:60px 1fr;
   }
 
   .btn-row{
@@ -507,14 +689,28 @@ details[open] .arrow{
 
 <body id="top">
 
-<header class="header">
-  <div class="header-inner">
-    <h1 class="header-title">鮮到味｜常見問題 FAQ</h1>
-    <div class="header-badge">早餐食材團購</div>
-  </div>
-</header>
-
 <main class="wrap">
+
+  <!-- FAQ Hero -->
+  <section class="faq-hero">
+    <div class="hero-top">
+      <div class="hero-badge">鮮到味早餐食材團購｜FAQ</div>
+    </div>
+
+    <h1 class="hero-title">常見問題 FAQ</h1>
+    <p class="hero-desc">
+      這裡整理了店家訂購、團購流程、保存方式、營業時間、聯絡資訊與食安聲明等常見問題，
+      方便您快速查詢需要的資訊。
+    </p>
+
+    <div class="hero-tags">
+      <span class="hero-tag">店家訂購</span>
+      <span class="hero-tag">團購流程</span>
+      <span class="hero-tag">產品保存</span>
+      <span class="hero-tag">聯絡資訊</span>
+    </div>
+  </section>
+
   <div class="section-head" id="faq-list">
     <h2 class="section-title">常見問題一覽</h2>
     <div class="section-sub">點擊問題即可展開內容</div>
@@ -531,11 +727,20 @@ details[open] .arrow{
         <span class="arrow">▼</span>
       </summary>
       <div class="content">
-        <ol class="list">
-          <li>請提供<strong>店家名稱、地址、電話</strong></li>
-          <li>請提供您需要的<strong>產品項目 / 數量</strong></li>
-          <li>客服收到資訊後，將協助回覆<strong>報價與訂購細節</strong></li>
-        </ol>
+        <ul class="step-list">
+          <li>
+            <span class="step-num">1</span>
+            <div class="step-text">請提供<strong>店家名稱、地址、電話</strong></div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div class="step-text">請提供您需要的<strong>產品項目 / 數量</strong></div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div class="step-text">客服收到資訊後，將協助回覆<strong>報價與訂購細節</strong></div>
+          </li>
+        </ul>
       </div>
     </details>
   </div>
@@ -553,9 +758,9 @@ details[open] .arrow{
       <div class="content">
         <p>您可依需求選擇以下購買方式：</p>
 
-        <div class="sub-box">
+        <div class="sub-box highlight">
           <div class="sub-title">① 門市取貨</div>
-          <p class="note">適合想直接到店自取的顧客。</p>
+          <p class="sub-desc">適合想直接到店自取的顧客。</p>
           <div class="btn-group">
             <a class="btn btn-primary"
                href="https://freshbreakfast.github.io/order-group/"
@@ -567,8 +772,7 @@ details[open] .arrow{
         </div>
 
         <div class="sub-box">
-          <div class="sub-title">② 好賣+（滿 699 免運）</div>
-          <p class="note">適合(全家)店到店取貨需求。</p>
+          <div class="sub-title">② 好賣+｜全家店到店（滿 699 免運）</div>
           <div class="btn-group">
             <a class="btn btn-line"
                href="https://famistore.famiport.com.tw/users/2903801"
@@ -636,9 +840,20 @@ details[open] .arrow{
       </summary>
       <div class="content">
         <div class="sub-box">
-          <p><strong>平日</strong>｜09:00～19:00</p>
-          <p><strong>週六</strong>｜09:00～15:00</p>
-          <p><strong>週日</strong>｜公休</p>
+          <ul class="step-list">
+            <li>
+              <span class="step-num">平</span>
+              <div class="step-text"><strong>平日</strong>｜09:00～19:00</div>
+            </li>
+            <li>
+              <span class="step-num">六</span>
+              <div class="step-text"><strong>週六</strong>｜09:00～15:00</div>
+            </li>
+            <li>
+              <span class="step-num">休</span>
+              <div class="step-text"><strong>週日</strong>｜公休</div>
+            </li>
+          </ul>
         </div>
       </div>
     </details>
@@ -655,42 +870,44 @@ details[open] .arrow{
         <span class="arrow">▼</span>
       </summary>
       <div class="content">
-        <div class="contact">
-          <div class="contact-item">
-            <div class="contact-label">電話</div>
-            <div class="contact-value">
-              <a href="tel:0285122798">(02) 8512-2798</a> ／
-              <a href="tel:0282122799">(02) 8212-2799</a>
+        <div class="contact-card">
+          <div class="contact-grid">
+            <div class="contact-row">
+              <div class="contact-label">電話</div>
+              <div class="contact-value">
+                <a href="tel:0285122798">(02) 8512-2798</a> ／
+                <a href="tel:0282122799">(02) 8212-2799</a>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-label">地址</div>
+              <div class="contact-value">
+                新北市三重區中興北街42號（EGG BUN 對面）
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-label">LINE</div>
+              <div class="contact-value">
+                <a href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  @567ncwhd
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="contact-item">
-            <div class="contact-label">地址</div>
-            <div class="contact-value">
-              新北市三重區中興北街42號（EGG BUN 對面）
-            </div>
+          <div class="btn-row">
+            <a class="btn btn-phone" href="tel:0285122798">撥打客服電話</a>
+            <a class="btn btn-map"
+               href="https://www.google.com/maps/search/?api=1&query=新北市三重區中興北街42號"
+               target="_blank"
+               rel="noopener noreferrer">
+              Google 地圖導航
+            </a>
           </div>
-
-          <div class="contact-item">
-            <div class="contact-label">LINE</div>
-            <div class="contact-value">
-              <a href="https://line.me/R/oaMessage/@567ncwhd/?text=您好，我想詢問產品問題"
-                 target="_blank"
-                 rel="noopener noreferrer">
-                @567ncwhd
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="btn-row">
-          <a class="btn btn-phone" href="tel:0285122798">撥打客服電話</a>
-          <a class="btn btn-map"
-             href="https://www.google.com/maps/search/?api=1&query=新北市三重區中興北街42號"
-             target="_blank"
-             rel="noopener noreferrer">
-            Google 地圖導航
-          </a>
         </div>
       </div>
     </details>
@@ -707,24 +924,24 @@ details[open] .arrow{
         <span class="arrow">▼</span>
       </summary>
       <div class="content">
-        <p>本公司食品安全聲明請參閱附件。</p>
+        <div class="notice-box">
+          <div class="notice-title">食品安全聲明附件</div>
+          <p>本公司食品安全聲明請參閱附件，如無法開啟附件，歡迎直接透過 LINE 客服與我們聯繫。</p>
 
-        <div class="btn-group">
-          <a class="btn btn-primary"
-             href="./S_22773768.png"
-             target="_blank"
-             rel="noopener noreferrer">
-            📄 查看食安聲明
-          </a>
+          <div class="btn-group">
+            <a class="btn btn-primary"
+               href="./line常見問題.pdf"
+               target="_blank"
+               rel="noopener noreferrer">
+              📄 查看食安聲明
+            </a>
+          </div>
         </div>
-
-        <p class="note" style="margin-top:10px;">
-          若無法開啟附件，歡迎直接透過 LINE 客服聯繫，我們會協助提供檔案。
-        </p>
       </div>
     </details>
   </div>
 
+  <!-- Footer -->
   <div class="footer">
     <div class="footer-title">鮮到味早餐食材團購</div>
     <p>
